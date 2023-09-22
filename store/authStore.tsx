@@ -6,24 +6,15 @@ import { produce } from 'immer';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type AuthStoreType = {
-  isAuth: boolean;
-  userId: string;
-  email: string;
-  role: string;
-  setIsAuth: (isAuth: boolean) => void;
-  setUserId: (userId: string) => void;
-  setEmail: (email: string) => void;
-  setRole: (role: string) => void;
-};
+import { AuthStoreType } from '@/types/entities/user';
 
 const useAuthStoreBase = create<AuthStoreType>()(
   persist(
     (set) => ({
       isAuth: false,
+      name: '',
       userId: '',
       email: '',
-      role: '',
       setIsAuth: (isAuth: boolean) =>
         set(
           produce((state) => {
@@ -36,16 +27,25 @@ const useAuthStoreBase = create<AuthStoreType>()(
             state.userId = userId;
           })
         ),
+      setName: (name: string) =>
+        set(
+          produce((state) => {
+            state.name = name;
+          })
+        ),
       setEmail: (email: string) =>
         set(
           produce((state) => {
             state.email = email;
           })
         ),
-      setRole: (role: string) =>
+        logout: () =>
         set(
           produce((state) => {
-            state.role = role;
+            state.auth = false;
+            state.userId = '';
+            state.email = '';
+            state.name = '';
           })
         ),
     }),

@@ -10,15 +10,15 @@ const inter = Inter({ subsets: ['latin'] });
 
 // Meta Data
 export const metadata: Metadata = {
-  metadataBase: new URL('https://template-next13.vercel.app/'),
+  metadataBase: new URL('https://glossy-gift.vercel.app/'),
   title: {
-    default: 'Next13-Template',
-    template: '%s | Next13-Template',
+    default: 'Glossy Gift',
+    template: '%s | Glossy Gift',
   },
   description:
     'Discover the Ultimate Next13 Template: Unleash the Power of TypeScript, TailwindCSS, schadcnui, tanstack, husky, and Beyond! Dive into a Dynamic Sandbox Loaded with Stylish Forms, Engaging Buttons, Delicious Toasts, and Sleek Tables. Craft Your Dream Project with Infinite Customization Possibilities!',
   verification: {
-    google: 'vHFS_i2JTa4SbtokZ6dHtPXhruGUBNqsSs3lLjCLnCo',
+    google: '',
   },
   robots: {
     index: true,
