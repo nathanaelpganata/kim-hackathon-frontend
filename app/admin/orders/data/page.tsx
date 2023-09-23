@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 // import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import { useQuery } from '@tanstack/react-query';
@@ -21,22 +21,18 @@ import { Checkbox } from '@/components/ui/checkbox';
 //   DropdownMenuTrigger,
 // } from '@/components/ui/dropdown-menu';
 
-
 // Data Definition
 type OrderSchemaData = {
   data: OrderSchema[];
-}
+};
 
 type OrderSchema = {
-
   no_pemesanan: string;
   customer_name: string;
   customer_email: string;
   customer_phone: string;
   quantity: number;
   category: string;
-
-
 };
 
 // Columns Definition
@@ -89,12 +85,10 @@ const columns: ColumnDef<OrderSchema>[] = [
   },
 ];
 
-
-
 const OrderTablePage = () => {
-  const { data: OrderData, isLoading } = useQuery<OrderSchemaData>(['/order'])
+  const { data: OrderData, isLoading } = useQuery<OrderSchemaData>(['/order']);
 
-  console.log(OrderData)
+  console.log(OrderData);
 
   const mappedOrderData = OrderData?.data.map((order) => {
     return {
@@ -103,22 +97,18 @@ const OrderTablePage = () => {
       customer_email: order.customer_email,
       customer_phone: order.customer_phone,
       category: order.category,
-    }
-  })
+    };
+  });
 
-
-
-  return <DashboardLayout>
-    {!isLoading ? (
-      <DataTable
-        data={mappedOrderData as OrderSchema[]}
-        columns={columns}
-      />
-    ) : (
-      <>Loading...</>
-    )}
-
-  </DashboardLayout>;
+  return (
+    <DashboardLayout>
+      {!isLoading ? (
+        <DataTable data={mappedOrderData as OrderSchema[]} columns={columns} />
+      ) : (
+        <>Loading...</>
+      )}
+    </DashboardLayout>
+  );
 };
 
 export default OrderTablePage;

@@ -42,4 +42,19 @@ const NavData: NavigationInterface[] = [
   },
 ];
 
-export { AdminDashboardNavData, NavData };
+const NavbarData = [
+  {
+    title: 'Tentang Kami',
+    href: '/',
+  },
+  {
+    title: 'Galeri',
+    href: '/gallery',
+  },
+  {
+    title: 'Hubungi Kami',
+    href: '/contactus',
+  },
+];
+
+export { AdminDashboardNavData, NavbarData, NavData };

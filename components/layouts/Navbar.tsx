@@ -8,22 +8,8 @@ import { TbHandClick } from 'react-icons/tb';
 import { cn } from '@/lib/utils';
 
 import Logo from '../Logo';
+import { NavbarData } from '@/constant/NavigationData';
 // import NavbarData from "@/constant/NavbarData";
-
-const NavbarData = [
-  {
-    title: 'Tentang Kami',
-    href: '/',
-  },
-  {
-    title: 'Galeri',
-    href: '/gallery',
-  },
-  {
-    title: 'Hubungi Kami',
-    href: '/contactus',
-  },
-];
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -31,8 +17,8 @@ const Navbar = () => {
 
   return (
     <nav className='fixed top-0 flex flex-row justify-between items-center w-full h-20 px-6 sm:px-10 z-[9999] bg-white'>
-      <Link href='/' className='relative w-16 h-16'>
-        <Logo />
+      <Link href='/' className='w-24 xs:w-32'>
+        <Logo variant='full' />
       </Link>
       <ul
         className={cn(
@@ -59,7 +45,7 @@ const Navbar = () => {
           </li>
         </Link>
       </ul>
-      <div className='md:hidden relative z-50'>
+      <div className='md:hidden relative z-50 mt-2'>
         <button onClick={() => setNavbarOpen(!navbarOpen)}>
           <GiHamburgerMenu
             className={`w-8 h-8 text-[#2C2C2C] ${

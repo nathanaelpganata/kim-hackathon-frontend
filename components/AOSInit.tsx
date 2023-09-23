@@ -7,7 +7,9 @@ import { useEffect } from 'react';
 
 export const AOSInit = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({
+      once: true,
+    });
   }, []);
 
   return null;

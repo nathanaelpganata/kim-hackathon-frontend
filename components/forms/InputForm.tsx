@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
+import { cn } from '@/lib/utils';
 
 type InputFormProps = {
   control: Control<any>;
@@ -19,6 +20,7 @@ type InputFormProps = {
   label?: string;
   placeholder?: string;
   helperText?: string;
+  className?: string;
 };
 
 const InputForm = ({
@@ -27,6 +29,7 @@ const InputForm = ({
   placeholder,
   name,
   helperText,
+  className,
   type = 'text',
 }: InputFormProps) => {
   const [hidePassword, setHidePassword] = React.useState<boolean>(true);
@@ -40,6 +43,7 @@ const InputForm = ({
           <div className='relative'>
             <FormControl>
               <Input
+                className={cn(className, '')}
                 placeholder={placeholder}
                 type={
                   type == 'password'
