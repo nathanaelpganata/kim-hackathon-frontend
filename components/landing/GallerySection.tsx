@@ -23,10 +23,11 @@ const GallerySection = () => {
             data-aos-anchor-placement='top-bottom'
             data-aos-delay='400'
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque semper vestibulum enim eu accumsan. Curabitur interdum
-            libero quis vehicula bibendum. Nullam egestas, nibh ac tempor
-            faucibus, dui orci commodo dui
+            Berbagai macam boneka lucu dan berkualiatas yang pernah kami buat. 
+            Mulai dari boneka berukuran 
+            mini yang sangat menggemaskan hingga boneka berukuran besar yang bisa 
+            menjadi hadiah istiewa. 
+            
           </p>
         </div>
         {GalleryData.map(({ ...v }) => (
