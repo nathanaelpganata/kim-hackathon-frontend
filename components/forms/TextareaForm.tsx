@@ -14,7 +14,7 @@ import { Textarea } from '../ui/textarea';
 type TextareaFormProps = {
   control: Control<any>;
   name: string;
-  label?: string;
+  label?: string | JSX.Element;
   placeholder?: string;
   helperText?: string;
   textareaClassName?: string;

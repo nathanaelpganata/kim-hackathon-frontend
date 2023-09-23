@@ -2,51 +2,51 @@ import { ReviewDataType } from '@/types/entities/review';
 
 const ReviewData: ReviewDataType[] = [
   {
-    name: 'John Doe',
+    name: 'Budi Prasetyo',
     rating: 5,
-    organization: 'Google',
+    organization: 'Tekno Solusi Indonesia',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Saya sangat senang dengan pembelian boneka kustom ini! Kualitasnya sangat bagus, dan detailnya benar-benar menakjubkan. Pelayanan pelanggan juga sangat baik, mereka mengerti persis apa yang saya inginkan. Sangat merekomendasikan untuk semua yang ingin memiliki boneka kustom unik',
     imageLink: 'https://i.imgur.com/h1LyFsH.png',
   },
   {
-    name: 'John Doe',
+    name: 'Siti Rahayu',
     rating: 4,
-    organization: 'Google',
+    organization: 'Harmoni  Tech Solutions',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Boneka kustom yang saya beli adalah hadiah ulang tahun sempurna untuk anak saya. Dia sangat senang melihat wajahnya sendiri di boneka tersebut. Pengiriman juga tepat waktu, dan proses pembuatan boneka cukup cepat. Terima kasih!',
     imageLink: 'https://i.imgur.com/BSK7iEv.jpeg',
   },
   {
-    name: 'John Doe',
+    name: 'Aditya Nugroho',
     rating: 5,
-    organization: 'Google',
+    organization: 'Mega Makanan Sejahtera',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Pembelian boneka kustom ini adalah pengalaman yang menyenangkan. Saya dapat berpartisipasi dalam proses desain, memilih warna, dan melihat hasil akhirnya. Boneka itu sendiri sangat lembut dan nyaman. Saya sudah berencana untuk memesan lagi!',
     imageLink: 'https://i.imgur.com/H2yQe0s.jpeg',
   },
   {
-    name: 'John Doe',
+    name: 'Putri Wulandari',
     rating: 5,
-    organization: 'Google',
+    organization: 'Cahaya Kreatif Studio',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Saya sangat terkesan dengan tingkat detail pada boneka kustom ini. Ekspresi wajahnya sangat mirip dengan foto yang saya kirim, dan kualitas jahitannya sangat rapi. Harga yang saya bayar sebanding dengan kualitas yang saya terima.',
     imageLink: 'https://i.imgur.com/h1LyFsH.png',
   },
   {
-    name: 'John Doe',
+    name: 'Iwan Setiawan',
     rating: 4,
-    organization: 'Google',
+    organization: 'Indra Logistik',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Pembelian boneka kustom ini adalah hadiah pernikahan yang sempurna untuk sahabat saya. Kami dapat memesan boneka dengan gambar pasangan mereka, dan hasilnya luar biasa. Mereka sangat senang dan terharu dengan hadiah tersebut. Terima kasih kepada produsen boneka kustom ini!',
     imageLink: 'https://i.imgur.com/BgbgbHW.jpeg',
   },
   {
-    name: 'John Doe',
+    name: 'Ratna Dewi',
     rating: 5,
-    organization: 'Google',
+    organization: 'Gemilang Garmen',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
+      'Saya baru saja menerima boneka kustom yang saya pesan, dan saya tidak bisa lebih bahagia dengan hasilnya. Boneka ini adalah replika sempurna dari hewan peliharaan saya, sampai ke setiap detailnya. Ini adalah hadiah ulang tahun yang tak terlupakan!',
     imageLink: 'https://i.imgur.com/Zmvh49x.jpeg',
   },
 ];

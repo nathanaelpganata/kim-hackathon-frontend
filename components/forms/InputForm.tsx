@@ -18,7 +18,7 @@ type InputFormProps = {
   control: Control<any>;
   name: string;
   type?: string;
-  label?: string;
+  label?: string | JSX.Element;
   placeholder?: string;
   helperText?: string;
   className?: string;

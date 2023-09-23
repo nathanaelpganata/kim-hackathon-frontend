@@ -20,7 +20,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 type DateFormProps = {
   control: Control<any>;
   name: string;
-  label?: string;
+  label?: string | JSX.Element;
   placeholder?: string;
   helperText?: string;
   disabledDateBefore?: string;

@@ -45,7 +45,7 @@ const ReviewCard = ({
           ))}
         </div>
       }
-      <p className='text-lg font line-clamp-3'>{description}</p>
+      <p className='text-lg font line-clamp-4 text-justify'>{description}</p>
     </div>
   );
 };

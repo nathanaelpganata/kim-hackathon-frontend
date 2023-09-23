@@ -24,24 +24,6 @@ const AdminDashboardNavData: NavigationInterface[] = [
   },
 ];
 
-const NavData: NavigationInterface[] = [
-  {
-    name: 'Catalog',
-    icon: AiFillHome,
-    href: '#',
-  },
-  {
-    name: 'About Us',
-    icon: AiFillHome,
-    href: '#',
-  },
-  {
-    name: 'Order Now',
-    icon: AiFillHome,
-    href: '#',
-  },
-];
-
 const NavbarData = [
   {
     title: 'Tentang Kami',
@@ -57,4 +39,4 @@ const NavbarData = [
   },
 ];
 
-export { AdminDashboardNavData, NavbarData, NavData };
+export { AdminDashboardNavData, NavbarData };

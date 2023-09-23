@@ -6,31 +6,51 @@ import { produce } from 'immer';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { OrderStoreType } from '@/types/entities/order';
+import {
+  CategoryEnum,
+  OrderStoreType,
+  PaymentMethodEnum,
+} from '@/types/entities/order';
 
 const useOrderStoreBase = create<OrderStoreType>()(
   persist(
     (set) => ({
-      biodata: {
+      category: {
+        category: CategoryEnum.boneka,
+      },
+      user: {
         customer_name: '',
-        phone: '',
-        picture: [],
+        customer_email: '',
+        customer_phone: '',
+        organization_name: '',
+        organization_website: '',
       },
-      payment: {
-        atas_nama: '',
-        bank_id: '',
-        bukti_bayar: [],
+      item: {
+        description: '',
+        quantity: 0,
+        width: 0,
+        height: 0,
+        length: 0,
+        deadline: new Date(),
+        payment_method: PaymentMethodEnum.dp,
+        design_img: [],
       },
-      setBiodata: (data) =>
+      setCategory: (data) =>
         set(
           produce<OrderStoreType>((state) => {
-            state.biodata = data = { ...state.biodata, ...data };
+            state.category = data = { ...state.category, ...data };
           })
         ),
-      setPayment: (data) =>
+      setUser: (data) =>
         set(
           produce<OrderStoreType>((state) => {
-            state.payment = data = { ...state.payment, ...data };
+            state.user = data = { ...state.user, ...data };
+          })
+        ),
+      setItem: (data) =>
+        set(
+          produce<OrderStoreType>((state) => {
+            state.item = data = { ...state.item, ...data };
           })
         ),
     }),

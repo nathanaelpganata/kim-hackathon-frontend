@@ -8,7 +8,7 @@ import Logo from '../Logo';
 
 const Footer = () => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col relative z-50'>
       <div className='bg-[#3056A2] h-52 sm:h-28 flex flex-col py-4 sm:py-0 sm:flex-row justify-between sm:pl-10 lg:pl-28 sm:pr-48 lg:pr-80  items-center'>
         <div className='flex flex-row items-center gap-5'>
           {NavbarData.map(({ title, href }) => (

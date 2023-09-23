@@ -39,7 +39,7 @@ const Navbar = () => {
             </li>
           </Link>
         ))}
-        <Link shallow href='/'>
+        <Link shallow href='/order'>
           <li className='bg-[#3056A2] px-5 py-2 border-white rounded-full text-white flex items-center gap-1 hover:rotate-[4deg] transition-all duration-200 ease-in-out'>
             <TbHandClick className='w-4 h-4' /> Buat suvenirmu disini!
           </li>
@@ -80,7 +80,7 @@ const Navbar = () => {
             </li>
           </Link>
         ))}
-        <Link shallow href='/'>
+        <Link shallow href='/order'>
           <li className='bg-[#3056A2] px-4 xs:px-5 py-2 border-white rounded-full whitespace-nowrap text-white flex items-center gap-1 hover:rotate-[4deg] transition-all duration-200 ease-in-out text-center'>
             <TbHandClick className='w-6 h-6 flex-shrink-0' /> Buat suvenirmu
           </li>

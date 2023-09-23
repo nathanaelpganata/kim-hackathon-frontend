@@ -13,7 +13,7 @@ type DropzoneInputProps = {
   accept?: Accept;
   helperText?: string;
   id: string;
-  label: string;
+  label: string | JSX.Element;
   acceptTypes?: string;
   maxFiles?: number;
   readOnly?: boolean;

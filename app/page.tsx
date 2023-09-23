@@ -7,6 +7,7 @@ import HeroSection from '@/components/landing/HeroSection';
 import ProductSection from '@/components/landing/ProductSection';
 import ReviewSection from '@/components/landing/ReviewSection';
 import Layout from '@/components/layouts/Layout';
+import ValueSection from '@/components/landing/ValueSection';
 
 const HomePage = () => {
   return (
@@ -17,9 +18,9 @@ const HomePage = () => {
         <div className='mt-20'>
           <ProductSection />
         </div>
-        {/* <div className='mt-20'>
+        <div className='mt-20'>
           <ValueSection />
-        </div> */}
+        </div>
         <div className='my-20'>
           <ReviewSection />
         </div>

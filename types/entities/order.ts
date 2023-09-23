@@ -1,18 +1,41 @@
-type setBiodataType = {
-  customer_name: String;
-  phone: String;
-  picture: String[];
+export enum CategoryEnum {
+  'boneka' = 'boneka',
+  'bantal' = 'bantal',
+  'lainnya' = 'lainnya',
+}
+export enum PaymentMethodEnum {
+  'dp' = 'dp',
+  'angsuran' = 'angsuran',
+}
+
+export type setCategoryType = {
+  category: CategoryEnum;
 };
 
-type setPaymentType = {
-  atas_nama: String;
-  bank_id: String;
-  bukti_bayar: String[];
+export type setUserType = {
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string;
+  organization_name?: string;
+  organization_website?: string;
+};
+
+export type setItemType = {
+  description: string;
+  quantity: number;
+  width: number;
+  height: number;
+  length: number;
+  deadline: Date;
+  payment_method: PaymentMethodEnum;
+  design_img: string[];
 };
 
 export type OrderStoreType = {
-  biodata: setBiodataType;
-  payment: setPaymentType;
-  setBiodata: (data: setBiodataType) => void;
-  setPayment: (data: setPaymentType) => void;
+  category: setCategoryType;
+  user: setUserType;
+  item: setItemType;
+  setCategory: (data: setCategoryType) => void;
+  setUser: (data: setUserType) => void;
+  setItem: (data: setItemType) => void;
 };

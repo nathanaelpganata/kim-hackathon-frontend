@@ -8,16 +8,16 @@ import ContactusHeroSection from '@/components/landing/ContactusHeroSection';
 import Layout from '@/components/layouts/Layout';
 
 const ContactusPage = () => {
-  const [orderInfoFound, setOrderInfoFound] = React.useState<boolean>(false);
+  const [data, setData] = React.useState<any>(null);
 
   return (
     <Layout>
       <div className='overflow-hidden'>
         <AOSInit />
-        {!orderInfoFound && <ContactusHeroSection />}
+        {!data && <ContactusHeroSection />}
         <CheckOrderSection
-          orderInfoFound={orderInfoFound}
-          setOrderInfoFound={setOrderInfoFound}
+          data={data}
+          setData={setData}
         />
       </div>
     </Layout>

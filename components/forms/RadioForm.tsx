@@ -19,7 +19,7 @@ type RadioFormProps = {
   control: Control<any>;
   name: string;
   radioItems: RadioItem[];
-  label?: string;
+  label?: string | JSX.Element;
 };
 
 const RadioForm = ({ label, control, name, radioItems }: RadioFormProps) => {
