@@ -15,7 +15,10 @@ const ContactusPage = () => {
       <div className='overflow-hidden'>
         <AOSInit />
         {!orderInfoFound && <ContactusHeroSection />}
-        <CheckOrderSection orderInfoFound={orderInfoFound} setOrderInfoFound={setOrderInfoFound} />
+        <CheckOrderSection
+          orderInfoFound={orderInfoFound}
+          setOrderInfoFound={setOrderInfoFound}
+        />
       </div>
     </Layout>
   );

@@ -37,20 +37,20 @@ const CheckOrderSection = ({
     toast({
       title: 'Searching',
       description: 'Searching for your order',
-    })
+    });
     try {
       const res = await axios.get(`/order/invoice/${data.orderId}`);
       console.log(res);
-      setOrderInfoFound(true)
+      setOrderInfoFound(true);
       toast({
         title: 'Order Found',
-      })
+      });
     } catch (e) {
       toast({
         title: 'Order Not Found',
         description: 'Please check your order ID',
-        variant: 'destructive'
-      })
+        variant: 'destructive',
+      });
     }
   };
 
@@ -94,7 +94,7 @@ const CheckOrderSection = ({
         </form>
       </Form>
       {/* Results of search */}
-      {!!orderInfoFound ? (<>Yes</>) : (<>No</>)}
+      {!!orderInfoFound ? <>Yes</> : <>No</>}
 
       {/* Results of search */}
       <Image

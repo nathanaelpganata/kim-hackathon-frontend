@@ -2,6 +2,8 @@ import React from 'react';
 import { Control } from 'react-hook-form';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
+import { cn } from '@/lib/utils';
+
 import {
   FormControl,
   FormDescription,
@@ -11,7 +13,6 @@ import {
   FormMessage,
 } from '../ui/form';
 import { Input } from '../ui/input';
-import { cn } from '@/lib/utils';
 
 type InputFormProps = {
   control: Control<any>;

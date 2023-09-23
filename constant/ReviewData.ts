@@ -1,4 +1,4 @@
-import { ReviewDataType } from "@/types/entities/review";
+import { ReviewDataType } from '@/types/entities/review';
 
 const ReviewData: ReviewDataType[] = [
   {

@@ -5,10 +5,10 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoCloseSharp } from 'react-icons/io5';
 import { TbHandClick } from 'react-icons/tb';
 
+import { NavbarData } from '@/constant/NavigationData';
 import { cn } from '@/lib/utils';
 
 import Logo from '../Logo';
-import { NavbarData } from '@/constant/NavigationData';
 // import NavbarData from "@/constant/NavbarData";
 
 const Navbar = () => {

@@ -5,7 +5,7 @@ type GalleryCardType = {
   name: string;
   imageLink: string;
   description: string;
-  descTitle?: string
+  descTitle?: string;
   withName?: boolean;
 };
 
@@ -24,7 +24,13 @@ const GalleryCard = ({
       data-aos-easing='ease-out-cubic'
       data-aos-duration='2000'
     >
-      <Image src={imageLink} width={380} height={380} alt={name} className='hover:scale-105 transition ease-in-out duration-150' />
+      <Image
+        src={imageLink}
+        width={380}
+        height={380}
+        alt={name}
+        className='hover:scale-105 transition ease-in-out duration-150'
+      />
       {withName && (
         <h3 className='text[#1E1E1E] font-semibold text-xl mt-4'>{name}</h3>
       )}
