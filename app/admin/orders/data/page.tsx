@@ -35,6 +35,27 @@ type OrderSchema = {
   status: string;
 };
 
+const order_status = [
+  {
+    column: 'status',
+    title: 'Status Pesanan',
+    options: [
+      {
+        value: 'diterima',
+        label: 'Diterima',
+      },
+      {
+        value: 'pending',
+        label: 'Pending',
+      },
+      {
+        value: 'ditolak',
+        label: 'Ditolak',
+      },
+    ],
+  },
+];
+
 const OrderTablePage = () => {
   const router = useRouter();
   const { data: OrderData, isLoading } = useQuery<OrderSchemaData>(['/order']);
@@ -153,7 +174,8 @@ const OrderTablePage = () => {
         <h1 className='text-5xl font-bold'>Pesanan</h1>
         <div className='mt-12'>
           {!isLoading ? (
-            <DataTable data={mappedOrderData as any} columns={columns} />
+            <DataTable data={mappedOrderData as any} columns={columns} searchFilter={'customer_name'}
+              facetedFilter={order_status} />
           ) : (
             <>Loading...</>
           )}
