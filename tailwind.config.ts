@@ -47,7 +47,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontFamily: {
-        zenMaruGothic: ['Zen Maru Gothic', 'sans']
+        zenMaruGothic: ['Zen Maru Gothic', 'sans'],
       },
     },
   },

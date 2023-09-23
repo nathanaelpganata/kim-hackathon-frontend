@@ -39,7 +39,7 @@ const useAuthStoreBase = create<AuthStoreType>()(
             state.email = email;
           })
         ),
-        logout: () =>
+      logout: () =>
         set(
           produce((state) => {
             state.auth = false;

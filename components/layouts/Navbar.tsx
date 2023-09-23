@@ -73,34 +73,33 @@ const Navbar = () => {
           />
         </button>
       </div>
-      
-        <ul
-          className={cn(
-            'absolute inset-y-0 right-0 bg-white w-[70%] min-h-screen px-8 md:hidden flex flex-col justify-center items-center gap-6 text-white text-base xs:text-lg font-bold transition-all ease-in-out duration-200',
-            navbarOpen ? 'translate-x-0' : 'translate-x-[100rem]'
-          )}
-        >
-          {NavbarData.map(({ title, href }) => (
-            <Link shallow href={href} key={title}>
-              <li
-                className={cn(
-                  pathname == href
-                    ? 'text-[#3056A2] underline'
-                    : 'text-[#2C2C2C] hover:underline hover:text-[#3056A2]',
-                  'decoration-2 decoration-[#E76767] underline-offset-8'
-                )}
-              >
-                {title}
-              </li>
-            </Link>
-          ))}
-          <Link shallow href='/'>
-            <li className='bg-[#3056A2] px-4 xs:px-5 py-2 border-white rounded-full whitespace-nowrap text-white flex items-center gap-1 hover:rotate-[4deg] transition-all duration-200 ease-in-out text-center'>
-              <TbHandClick className='w-6 h-6 flex-shrink-0' /> Buat suvenirmu
+
+      <ul
+        className={cn(
+          'absolute inset-y-0 right-0 bg-white w-[70%] min-h-screen px-8 md:hidden flex flex-col justify-center items-center gap-6 text-white text-base xs:text-lg font-bold transition-all ease-in-out duration-200',
+          navbarOpen ? 'translate-x-0' : 'translate-x-[100rem]'
+        )}
+      >
+        {NavbarData.map(({ title, href }) => (
+          <Link shallow href={href} key={title}>
+            <li
+              className={cn(
+                pathname == href
+                  ? 'text-[#3056A2] underline'
+                  : 'text-[#2C2C2C] hover:underline hover:text-[#3056A2]',
+                'decoration-2 decoration-[#E76767] underline-offset-8'
+              )}
+            >
+              {title}
             </li>
           </Link>
-        </ul>
-      
+        ))}
+        <Link shallow href='/'>
+          <li className='bg-[#3056A2] px-4 xs:px-5 py-2 border-white rounded-full whitespace-nowrap text-white flex items-center gap-1 hover:rotate-[4deg] transition-all duration-200 ease-in-out text-center'>
+            <TbHandClick className='w-6 h-6 flex-shrink-0' /> Buat suvenirmu
+          </li>
+        </Link>
+      </ul>
     </nav>
   );
 };

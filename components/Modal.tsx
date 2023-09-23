@@ -73,7 +73,9 @@ export function Modal({
           )}
 
           <DialogTitle className='pt-2'>{dialogTitle}</DialogTitle>
-          <DialogDescription className='text-center'>{dialogDescription}</DialogDescription>
+          <DialogDescription className='text-center'>
+            {dialogDescription}
+          </DialogDescription>
         </DialogHeader>
         {children}
         {!!dialogButtonLabel && (
