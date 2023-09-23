@@ -2,22 +2,37 @@
 
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import DashboardLayout from '@/components/layouts/dashboard/DashboardLayout';
+import { Modal } from '@/components/Modal';
 import { Badge } from '@/components/ui/badge';
+import axios from '@/lib/axios';
 
-type OrderSchema = {
-  id: string;
-  no_pemesanan: string;
-  customer: any;
-  quantity: number;
-  category: string;
-};
+type OrderSchema =
+  {
+    id: string;
+    no_pemesanan: string;
+    customer: any;
+    quantity: number;
+    category: string;
+  };
+
+
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const { data, isLoading } = useQuery<any>([`order/${params.slug}`]);
-  console.log(data);
+  const [orderSuccess, setOrderSuccess] = React.useState<boolean>(true);
+
+
+
+  const confirmationOrder = async (id: string) => {
+    const response = await axios.put(`/order/${id}`, {
+      status: 'diterima'
+    })
+
+    setOrderSuccess(true)
+  }
 
   return (
     <DashboardLayout>
@@ -51,7 +66,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 <Badge
                   className={
                     data.data.status == 'pending' ||
-                    data.data.status == 'ditolak'
+                      data.data.status == 'ditolak'
                       ? 'bg-[#E7A427]'
                       : 'bg-[#2CA87F]'
                   }
@@ -77,14 +92,39 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 <p>Tinggi: {data.data.height}</p>
 
                 <h3 className='text-xl my-2'>
-                  <b>Gambar {data.data.design_url}</b>
+                  <b>Gambar Desain</b>
                 </h3>
                 <Image
-                  src={`https://hackthon.fly.dev/${data.data.design_url}`}
+                  src={data.data.design_url}
                   alt='gambar'
                   width={300}
                   height={300}
                 />
+
+
+                {orderSuccess || data.data.status == 'diproses' ? (
+                  <Modal
+                    buttonLabel={'Save Changes'}
+                    dialogButtonLabel={'Save'}
+                    dialogTitle={'Are you Sure?'}
+                    dialogDescription={'Changes will be saved permanently'}
+                    dialogImage='/modal-confirmation.png'
+                    widthImage={244}
+                    heightImage={167}
+                    mutationFn={() => confirmationOrder(params.slug)}
+                  />
+                ) : data.data.status === 'diproses' ? null : (
+                  <Modal
+                    buttonLabel={'Save Changes'}
+                    dialogButtonLabel={'Save'}
+                    dialogTitle={'Are you Sure?'}
+                    dialogDescription={'Changes will be saved permanently'}
+                    dialogImage='/modal-confirmation.png'
+                    widthImage={244}
+                    heightImage={167}
+                    mutationFn={() => confirmationOrder(params.slug)}
+                  />
+                )}
               </div>
             </div>
           ) : (

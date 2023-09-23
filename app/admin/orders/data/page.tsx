@@ -9,6 +9,7 @@ import { LuMoreHorizontal } from 'react-icons/lu';
 
 import DashboardLayout from '@/components/layouts/dashboard/DashboardLayout';
 import { DataTable } from '@/components/table/DataTable';
+import { DataTableColumnHeader } from '@/components/table/DataTableColumnHeader';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -31,6 +32,7 @@ type OrderSchema = {
   customer: any;
   quantity: number;
   category: string;
+  status: string;
 };
 
 const OrderTablePage = () => {
@@ -90,6 +92,17 @@ const OrderTablePage = () => {
       accessorKey: 'category',
     },
     {
+      id: 'status',
+      accessorKey: 'status',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title='Status Pesanan' />
+      ),
+      filterFn: (row, id, value) => {
+        return value.includes(row.getValue(id));
+      },
+
+    },
+    {
       id: 'actions',
       header: 'Actions',
       cell: ({ row }) => {
@@ -130,6 +143,7 @@ const OrderTablePage = () => {
       customer_email: order.customer[0].customer_email,
       customer_phone: order.customer[0].customer_phone,
       category: order.category,
+      status: order.status,
     };
   });
 
