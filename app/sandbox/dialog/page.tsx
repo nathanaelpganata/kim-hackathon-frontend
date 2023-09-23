@@ -91,12 +91,15 @@ const SandboxDialogPage = () => {
           <p className='text-2xl font-semibold'>Default Dialog</p>
           <div className='flex flex-row flex-wrap justify-left items-center w-full max-w-lg gap-6'>
             <Modal
-              // isOpen={isOpen}
+              // isOpen={true}
               // onClose={setClose}
               buttonLabel={'Save Changes'}
               dialogButtonLabel={'Save'}
               dialogTitle={'Are you Sure?'}
-              dialogDescription={'Changes will be saved permanently'}
+              dialogImage='/modal-confirmation.png'
+              widthImage={244}
+              heightImage={167}
+              // dialogDescription={'Changes will be saved permanently'}
               mutationFn={() => {
                 toast({
                   title: 'Changes Saved',

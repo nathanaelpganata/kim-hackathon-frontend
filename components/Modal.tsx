@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -10,9 +12,12 @@ import {
 } from '@/components/ui/dialog';
 
 type DialogButtonType = {
-  buttonLabel: String;
   dialogTitle: String;
-  dialogDescription: String;
+  dialogDescription?: String;
+  buttonLabel?: String;
+  dialogImage?: string;
+  widthImage?: number;
+  heightImage?: number;
   dialogButtonLabel?: String;
   buttonVariant?:
     | 'link'
@@ -35,6 +40,9 @@ export function Modal({
   dialogTitle,
   dialogDescription,
   dialogButtonLabel,
+  heightImage,
+  widthImage,
+  dialogImage,
   children,
   isOpen,
   onClose,
@@ -49,17 +57,29 @@ export function Modal({
   return (
     <Dialog open={isOpen} onOpenChange={onChange}>
       <DialogTrigger asChild>
-        <Button variant={buttonVariant}>{buttonLabel}</Button>
+        {!!buttonLabel && (
+          <Button variant={buttonVariant}>{buttonLabel}</Button>
+        )}
       </DialogTrigger>
-      <DialogContent className='sm:max-w-[425px]'>
-        <DialogHeader>
-          <DialogTitle>{dialogTitle}</DialogTitle>
-          <DialogDescription>{dialogDescription}</DialogDescription>
+      <DialogContent className='sm:max-w-[425px] max-w-xs'>
+        <DialogHeader className='flex flex-col items-center'>
+          {!!dialogImage && (
+            <Image
+              src={dialogImage}
+              width={widthImage}
+              height={heightImage}
+              alt={dialogImage}
+            />
+          )}
+
+          <DialogTitle className='pt-2'>{dialogTitle}</DialogTitle>
+          <DialogDescription className='text-center'>{dialogDescription}</DialogDescription>
         </DialogHeader>
         {children}
         {!!dialogButtonLabel && (
-          <DialogFooter>
+          <DialogFooter className='flex flex-row gap-1 mx-auto mt-2'>
             <Button
+              className='w-32'
               type='submit'
               onClick={() => (mutationFn ? mutationFn() : null)}
             >

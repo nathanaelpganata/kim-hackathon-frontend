@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { serialize } from 'object-to-formdata';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -11,15 +12,18 @@ import useOrderStore from '@/store/orderStore';
 
 import DropzoneInput from '../forms/DropzoneInput';
 import InputForm from '../forms/InputForm';
-import { Button } from '../ui/button';
+import { Modal } from '../Modal';
 import { Form } from '../ui/form';
-import { toast } from '../ui/use-toast';
 
 const PaymentStep = ({
   setStep,
 }: {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+  const [orderSuccess, setOrderSuccess] = React.useState<boolean>(false);
+
+  const router = useRouter();
+
   const biodata = useOrderStore.useBiodata();
   // const setPayment = useOrderStore.useSetPayment();
 
@@ -39,24 +43,26 @@ const PaymentStep = ({
     },
   });
 
-  type OrderDataType = {
-    customer_name: String;
-    phone: String;
-    picture: String[];
-    atas_nama: String;
-    bank_id: String;
-    bukti_bayar: String[];
+  //Modal Success
+  const successModal = () => {
+    <Modal
+      isOpen={true}
+      buttonLabel={'Save Chanasfdsges'}
+      dialogButtonLabel={'dasfad'}
+      dialogTitle={'Are you Sure?'}
+      dialogDescription={'Changes will be saved permanently'}
+      dialogImage='/modal-confirmation.png'
+      widthImage={244}
+      heightImage={167}
+      mutationFn={() => onSubmit(form.getValues())}
+    />;
   };
 
   // Mutation
   const { mutate: postOrderData } = useMutation<void, unknown, any>(
     async (data) => {
-      toast({
-        title: 'Submitted Successfully',
-        description: 'lorem ipsum dolor sit amet',
-      });
-      console.log(data);
-      setStep(3);
+      console.log('data', data);
+      setOrderSuccess(true);
     }
   );
 
@@ -73,8 +79,7 @@ const PaymentStep = ({
     const formdata = serialize(finalData, {
       indices: true,
     });
-    console.log(formdata);
-    // postOrderData(formdata);
+    postOrderData(formdata);
   };
 
   return (
@@ -115,14 +120,30 @@ const PaymentStep = ({
                 />
               )}
             />
-            {/* <Modal
+            <Modal
               buttonLabel={'Save Changes'}
               dialogButtonLabel={'Save'}
               dialogTitle={'Are you Sure?'}
               dialogDescription={'Changes will be saved permanently'}
+              dialogImage='/modal-confirmation.png'
+              widthImage={244}
+              heightImage={167}
               mutationFn={() => onSubmit(form.getValues())}
-            /> */}
-            <Button>Submit</Button>
+            />
+            {!!orderSuccess && (
+              <Modal
+                isOpen={true}
+                dialogTitle={'Yeay! Pesananmu berhasil dibuat'}
+                dialogButtonLabel={'Cek Pesanan'}
+                dialogDescription={
+                  'Nomor pemesanan dikirimkan melalui email dan WA. Gunakan nomor tersebut untuk mengecek pesananmu secara berkala ya'
+                }
+                dialogImage='/modal-success.png'
+                widthImage={204}
+                heightImage={170}
+                mutationFn={() => router.push('/cek-order')}
+              />
+            )}
           </form>
         </Form>
       </div>
