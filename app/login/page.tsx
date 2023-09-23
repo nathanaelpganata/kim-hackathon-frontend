@@ -14,6 +14,7 @@ import { toast } from '@/components/ui/use-toast';
 import axios from '@/lib/axios';
 import useAuthStore from '@/store/authStore';
 import { AxiosErrorType } from '@/types/api';
+import Image from 'next/image';
 
 const LoginPage = () => {
   // Router initialization
@@ -44,6 +45,10 @@ const LoginPage = () => {
 
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
+      toast({
+        title: 'Loading...',
+        description: `Mohon tunggu sebentar`,
+      });
       const res = await axios.post('/auth/login', data);
       const responseData = res.data.data;
 
@@ -53,7 +58,6 @@ const LoginPage = () => {
       setAuth(true);
       localStorage.setItem('accessToken', responseData.accessToken);
       router.push('/admin');
-
       toast({
         title: res.data.message,
         description: `Selamat datang ${name}!`,
@@ -69,28 +73,41 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-white'>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className='flex flex-col max-w-sm w-full border-2 border-black rounded-2xl p-6 gap-y-3'
-        >
-          <InputForm
-            control={form.control}
-            name='email'
-            placeholder='Enter your email here'
-            label='Email'
-          />
-          <InputForm
-            control={form.control}
-            name='password'
-            placeholder='Enter your password here'
-            label='Password'
-            type='password'
-          />
-          <Button type='submit'>Submit</Button>
-        </form>
-      </Form>
+    <div className='flex flex-col md:flex-row min-h-screen bg-white justify-center'>
+      <div className='hidden md:w-1/2 md:block'>
+        <Image
+          src={'/order/background-blue.png'}
+          width={818}
+          height={1188}
+          alt='background-blue'
+          className=' md:h-screen md:w-full'
+        />
+      </div>
+      <div className='md:w-1/2 flex justify-center items-center px-4'>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className='flex flex-col max-w-sm w-full gap-y-3'
+          >
+            <h1 className='text-3xl font-bold'>Glossy Gift</h1>
+            <h2 className='-translate-y-4 ml-32'>Login</h2>
+            <InputForm
+              control={form.control}
+              name='email'
+              placeholder='Enter your email here'
+              label='Email'
+            />
+            <InputForm
+              control={form.control}
+              name='password'
+              placeholder='Enter your password here'
+              label='Password'
+              type='password'
+            />
+            <Button type='submit'>Submit</Button>
+          </form>
+        </Form>
+      </div>
     </div>
   );
 };

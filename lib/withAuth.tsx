@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import axios from '@/lib/axios';
+import Loading from '@/components/Loading';
 
 export default function withAuth(WrappedComponent: React.ComponentType) {
   const AuthenticatedComponent = (props: any) => {
@@ -33,7 +34,7 @@ export default function withAuth(WrappedComponent: React.ComponentType) {
       checkAuth();
     }, [router]);
 
-    return isLoading ? <div>Loading...</div> : <WrappedComponent {...props} />;
+    return isLoading ? <Loading /> : <WrappedComponent {...props} />;
   };
 
   return AuthenticatedComponent;

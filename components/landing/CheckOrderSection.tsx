@@ -39,20 +39,20 @@ const CheckOrderSection = ({
 
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     toast({
-      title: 'Searching',
-      description: 'Searching for your order',
+      title: 'Mencari...',
+      description: 'Mencari pesanan anda...',
     });
     try {
       const res = await axios.get(`/order/invoice/${data.orderId}`);
       console.log(res);
       setData(res.data.data);
       toast({
-        title: 'Order Found',
+        title: 'Pesanan Ditemukan!',
       });
     } catch (e) {
       toast({
-        title: 'Order Not Found',
-        description: 'Please check your order ID',
+        title: 'Pesanan Tidak Ditemukan!',
+        description: 'Tolong cek ulang nomor pesanan anda',
         variant: 'destructive',
       });
     }
@@ -108,100 +108,130 @@ const CheckOrderSection = ({
       </Form>
       {/* Results of search */}
       <div className='mx-2'>
-      {data != null && (
-        <div className='flex flex-col bg-white rounded-lg justify-center max-w-4xl mx-auto p-2 sm:p-4'>
-          <h3 className='flex flex-row items-center text-[#2CA87F] font bold text-2xl sm:text-3xl font-medium'>
-            {data.status == 'diterima' ? (
-              <p className='text-[#2CA87F] flex flex-row items-center gap-1 '>
-                <BsFillCheckCircleFill className='w-8 h-8 text-[#2CA87F] mt-1' />
-                Pesanan Diterima
-              </p>
-            ) : data.status == 'ditolak' ? (
-              <p className='text-red-600 flex flex-row items-center gap-1 '>
-                <AiFillCloseCircle className='w-8 h-8 text-red-600 mt-1' />
-                Pesanan Ditolak
-              </p>
-            ) : (
-              <p className='text-yellow-600 flex flex-row items-center gap-1 '>
-                <AiFillPauseCircle className='w-8 h-8 text-yellow-600 mt-1' />
-                Pesanan Pending
-              </p>
-            )}
-          </h3>
-          <div className='flex flex-col border border-slate-300 text-sm font-bold mt-3'>
-            <h4 className='p-2'>Informasi Pemesan</h4>
-            <div className='grid grid-cols-2'>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Order ID</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].order_id}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Email</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].customer_email}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Nama</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].customer_name}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>No. Telp</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].customer_phone}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>
-                Nama Organisasi
-              </div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].organization_name ? '-': data.OrderCustomerDetail[0].organization_name}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>
-                Website Organisasi
-              </div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.OrderCustomerDetail[0].organization_website ? '-': data.OrderCustomerDetail[0].organization_website}
-              </div>
-              <h4 className='p-2 border-t col-span-2'>Detail Informasi Barang</h4>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Invoice ID</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.invoice}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>
-                Kategori:
-              </div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.category}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Deskripsi</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.description}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Kuantitas</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.quantity}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Ukuran (P x L x T)</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.width} cm x {data.length} cm x {data.height} cm
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>Gambar Desain</div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                <Link href={data.design_url} target='blank' className='text-blue-500 underline hover:brightness-75'>View Here</Link>
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>
-                Deadline:
-              </div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-              {new Date(data.deadline).toLocaleString()}
-              </div>
-              <div className='border-t border-slate-300 p-1 bg-slate-50'>
-                Metode Pembayaran:
-              </div>
-              <div className='border-t border-l border-slate-300 p-1 break-all'>
-                {data.payment_method}
+        {data != null && (
+          <div className='flex flex-col bg-white rounded-lg justify-center max-w-4xl mx-auto p-2 sm:p-4'>
+            <h3 className='flex flex-row items-center text-[#2CA87F] font bold text-2xl sm:text-3xl font-medium'>
+              {data.status == 'diterima' ? (
+                <p className='text-[#2CA87F] flex flex-row items-center gap-1 '>
+                  <BsFillCheckCircleFill className='w-8 h-8 text-[#2CA87F] mt-1' />
+                  Pesanan Diterima
+                </p>
+              ) : data.status == 'ditolak' ? (
+                <p className='text-red-600 flex flex-row items-center gap-1 '>
+                  <AiFillCloseCircle className='w-8 h-8 text-red-600 mt-1' />
+                  Pesanan Ditolak
+                </p>
+              ) : (
+                <p className='text-yellow-600 flex flex-row items-center gap-1 '>
+                  <AiFillPauseCircle className='w-8 h-8 text-yellow-600 mt-1' />
+                  Pesanan Pending
+                </p>
+              )}
+            </h3>
+            <div className='flex flex-col border border-slate-300 text-sm font-bold mt-3'>
+              <h4 className='p-2'>Informasi Pemesan</h4>
+              <div className='grid grid-cols-2'>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Order ID
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].order_id}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Email
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].customer_email}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Nama
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].customer_name}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  No. Telp
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].customer_phone}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Nama Organisasi
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].organization_name
+                    ? '-'
+                    : data.OrderCustomerDetail[0].organization_name}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Website Organisasi
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.OrderCustomerDetail[0].organization_website
+                    ? '-'
+                    : data.OrderCustomerDetail[0].organization_website}
+                </div>
+                <h4 className='p-2 border-t col-span-2'>
+                  Detail Informasi Barang
+                </h4>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Invoice ID
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.invoice}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Kategori:
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.category}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Deskripsi
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.description}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Kuantitas
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.quantity}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Ukuran (P x L x T)
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.width} cm x {data.length} cm x {data.height} cm
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Gambar Desain
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  <Link
+                    href={data.design_url}
+                    target='blank'
+                    className='text-blue-500 underline hover:brightness-75'
+                  >
+                    View Here
+                  </Link>
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Deadline:
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {new Date(data.deadline).toLocaleString()}
+                </div>
+                <div className='border-t border-slate-300 p-1 bg-slate-50'>
+                  Metode Pembayaran:
+                </div>
+                <div className='border-t border-l border-slate-300 p-1 break-all'>
+                  {data.payment_method}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
       {/* Results of search */}
       <Image

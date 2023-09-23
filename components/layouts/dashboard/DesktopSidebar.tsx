@@ -8,7 +8,7 @@ import Navigation from './Navigation';
 const DesktopSidebar = () => {
   return (
     <div
-      className={cn('fixed bg-slate-400 w-64 flex-col h-full hidden lg:flex')}
+      className={cn('fixed bg-[#E14747] w-64 flex-col h-full hidden xl:flex')}
     >
       <div className='relative w-24 h-24 mx-auto my-8'>
         <Logo variant='full' />

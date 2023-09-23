@@ -1,26 +1,19 @@
 import { AiFillHome } from 'react-icons/ai';
+import { BiSolidShoppingBags } from 'react-icons/bi';
 
 import { NavigationInterface } from '@/types/navigation';
 
 const AdminDashboardNavData: NavigationInterface[] = [
   {
-    name: 'Home',
+    name: 'Beranda',
     icon: AiFillHome,
     href: '/admin',
     exactMatch: true,
   },
   {
-    name: 'Orders',
-    icon: AiFillHome,
+    name: 'Pesanan',
+    icon: BiSolidShoppingBags,
     href: '/admin/orders',
-    children: [
-      {
-        name: 'Data',
-        icon: AiFillHome,
-        href: '/admin/orders/data',
-        exactMatch: false,
-      },
-    ],
   },
 ];
 
