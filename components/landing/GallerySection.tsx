@@ -23,11 +23,9 @@ const GallerySection = () => {
             data-aos-anchor-placement='top-bottom'
             data-aos-delay='400'
           >
-            Berbagai macam boneka lucu dan berkualiatas yang pernah kami buat. 
-            Mulai dari boneka berukuran 
-            mini yang sangat menggemaskan hingga boneka berukuran besar yang bisa 
-            menjadi hadiah istiewa. 
-            
+            Berbagai macam boneka lucu dan berkualiatas yang pernah kami buat.
+            Mulai dari boneka berukuran mini yang sangat menggemaskan hingga
+            boneka berukuran besar yang bisa menjadi hadiah istiewa.
           </p>
         </div>
         {GalleryData.map(({ ...v }) => (

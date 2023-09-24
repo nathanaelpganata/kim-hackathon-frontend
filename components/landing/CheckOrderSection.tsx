@@ -159,7 +159,7 @@ const CheckOrderSection = ({
                   Nama Organisasi
                 </div>
                 <div className='border-t border-l border-slate-300 p-1 break-all'>
-                  {data.OrderCustomerDetail[0].organization_name
+                  {!data.OrderCustomerDetail[0].organization_name
                     ? '-'
                     : data.OrderCustomerDetail[0].organization_name}
                 </div>
@@ -167,7 +167,7 @@ const CheckOrderSection = ({
                   Website Organisasi
                 </div>
                 <div className='border-t border-l border-slate-300 p-1 break-all'>
-                  {data.OrderCustomerDetail[0].organization_website
+                  {!data.OrderCustomerDetail[0].organization_website
                     ? '-'
                     : data.OrderCustomerDetail[0].organization_website}
                 </div>

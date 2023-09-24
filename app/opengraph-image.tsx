@@ -12,7 +12,12 @@ export default function opengraphImage() {
   return new ImageResponse(
     (
       <div className='relative' style={{ display: 'flex' }}>
-        <img alt='Next13-Template' src={'https://i.imgur.com/KHaQorn.png'} />
+        <img
+          alt='Glossy-Gift'
+          src={
+            'https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/24/2022/06/boneka-beruang.jpg'
+          }
+        />
       </div>
     ),
     size

@@ -37,11 +37,14 @@ const ItemStep = () => {
 
   // Form
   const itemOrderFormSchema = z.object({
-    description: z.string().max(10000, {
-      message: 'Maximal 10000 characters',
-    }).refine((value) => value.trim() !== '', {
-      message: 'Description is required',
-    }),
+    description: z
+      .string()
+      .max(10000, {
+        message: 'Maximal 10000 characters',
+      })
+      .refine((value) => value.trim() !== '', {
+        message: 'Description is required',
+      }),
     quantity: z.string().max(255, {
       message: 'Maximal 255 characters',
     }),

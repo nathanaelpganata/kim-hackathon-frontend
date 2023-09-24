@@ -32,7 +32,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       {/* Desktop Sidebar Start */}
       <div className={cn('flex flex-row')}>
         <DesktopSidebar />
-        <main className='xl:ml-64 mt-20 bg-slate-100 w-full min-h-screen '>{children}</main>
+        <main className='xl:ml-64 mt-20 bg-slate-100 w-full min-h-screen '>
+          {children}
+        </main>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const DesktopSidebar = () => {
     <div
       className={cn('fixed bg-[#E14747] w-64 flex-col h-full hidden xl:flex')}
     >
-      <div className='relative w-24 h-24 mx-auto my-8'>
+      <div className='relative w-52 mx-auto my-8'>
         <Logo variant='full' />
       </div>
       <div className='flex flex-col gap-0.5'>

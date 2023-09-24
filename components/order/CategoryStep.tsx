@@ -17,7 +17,7 @@ const CategoryStep = ({
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   // Store
-  const setCategory = useOrderStore.useSetCategory()
+  const setCategory = useOrderStore.useSetCategory();
 
   // Mounted
   const [mounted, setMounted] = React.useState(false);
@@ -29,7 +29,7 @@ const CategoryStep = ({
   const { handleSubmit } = methods;
   const onSubmit = (data: setCategoryType) => {
     console.log(data);
-    setCategory(data)
+    setCategory(data);
     setStep(2);
   };
 

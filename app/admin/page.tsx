@@ -88,7 +88,7 @@ ChartJS.register(
 // };
 
 const lineChartOptions_1 = {
-  responsive: true,
+  // responsive: true,
   plugins: {
     legend: {
       display: false,
@@ -251,50 +251,42 @@ const lineChartData_3 = {
   ],
 };
 
-const barChartOptions_1 = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-      align: 'end' as const,
-      labels: {
-        boxWidth: 7,
-        usePointStyle: true,
-        pointStyle: 'circle',
-      },
-    },
-    title: {
-      text: 'Penjualan Report',
-      display: true,
-      color: 'rgba(0, 0, 0, 1)',
-      font: {
-        size: 18,
-      },
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-};
-
-const salesPerCategoryDataOptionPie = {
-  elements: {
-    arc: {
-      weight: 0.5,
-      borderWidth: 3,
-    },
-  },
-  cutOut:150
-};
+// const barChartOptions_1 = {
+//   responsive: true,
+//   plugins: {
+//     legend: {
+//       position: 'top' as const,
+//       align: 'end' as const,
+//       labels: {
+//         boxWidth: 7,
+//         usePointStyle: true,
+//         pointStyle: 'circle',
+//       },
+//     },
+//     title: {
+//       text: 'Penjualan Report',
+//       display: true,
+//       color: 'rgba(0, 0, 0, 1)',
+//       font: {
+//         size: 18,
+//       },
+//     },
+//   },
+//   scales: {
+//     x: {
+//       grid: {
+//         display: false,
+//       },
+//     },
+//   },
+// };
 
 const AdminPage = () => {
+  //use Query
   const { data: OrderData, isLoading } = useQuery<OrderSchemaData>(['/order']);
+
+  // Get categories
   const categoryData = OrderData?.data.map((data) => data.category);
-  console.log(categoryData);
   // Count categories
   function countCategories(categoryData: any[]): number[] {
     const counts: { [key: string]: number } = {};
@@ -311,8 +303,48 @@ const AdminPage = () => {
     return countsArray;
   }
 
+  // Get status
+  const statusData = OrderData?.data.map((data) => data.status);
+  // Count Status
+  function countStatus(statusData: any[]): number[] {
+    const counts: { [key: string]: number } = {};
+    statusData;
+    isLoading
+      ? null
+      : statusData.forEach((status: string) => {
+          counts[status] = (counts[status] || 0) + 1;
+        });
+
+    // Convert counts to an array of values
+    const countsArray = Object.values(counts);
+
+    return countsArray;
+  }
+
   // Assuming you have the 'categoryData' array as you mentioned.
   const counts = countCategories(categoryData as any);
+  const countStatusData = countStatus(statusData as any);
+
+  const salesStatusData = {
+    labels: ['Ditolak', 'Pending', 'Diterima'],
+    datasets: [
+      {
+        label: 'Jumlah Penjualan per Kategori',
+        data: countStatusData,
+        backgroundColor: [
+          'rgba(46, 204, 113, 0.2)',
+          'rgba(242, 120, 75, 0.2)',
+          'rgba(138, 43, 226, 0.2)',
+        ],
+        borderColor: [
+          'rgba(46, 204, 113, 1)',
+          'rgba(242, 120, 75, 1)',
+          'rgba(138, 43, 226, 1)',
+        ],
+        barThickness: 10,
+      },
+    ],
+  };
 
   const salesPerCategoryData = {
     labels: ['Bantal', 'Boneka', 'Lainnya'],
@@ -321,18 +353,28 @@ const AdminPage = () => {
         label: 'Jumlah Penjualan per Kategori',
         data: counts,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
+          'rgba(48, 86, 162, 0.2)',
+          'rgba(225, 71, 71, 0.2)',
+          'rgba(255, 215, 93, 0.2)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
+          'rgba(48, 86, 162, 1)',
+          'rgba(225, 71, 71, 1)',
+          'rgba(255, 215, 93, 1)',
         ],
         barThickness: 10,
       },
     ],
+  };
+
+  const salesPerCategoryDataOptionPie = {
+    elements: {
+      arc: {
+        weight: 0.5,
+        borderWidth: 3,
+      },
+    },
+    cutout: 150,
   };
 
   return (
@@ -343,11 +385,9 @@ const AdminPage = () => {
             {/* 1st Line Chart Start */}
             <div className='relative md:max-w-[360px] w-full flex flex-row p-4 rounded-lg items-center bg-white'>
               <div className='flex flex-col text-slate-500'>
-                <h3 className='text-base sm:text-lg font-medium'>
-                  Penjualan Kotor
-                </h3>
+                <h3 className='text-base sm:text-lg font-medium'>Engagement</h3>
                 <p className='text-xl sm:tefxt-2xl text-black font-semibold'>
-                  $306.20
+                  16003
                 </p>
                 <p className='flex flex-row items-center text-sm sm:text-base text-green-500 font-semibold'>
                   {((lineChartData_1.datasets[0].data[
@@ -379,11 +419,9 @@ const AdminPage = () => {
             {/* 2nd Line Chart Start */}
             <div className='relative md:max-w-[360px] w-full flex flex-row p-4 rounded-lg items-center bg-white'>
               <div className='flex flex-col text-slate-500'>
-                <h3 className='text-base sm:text-lg font-medium'>
-                  Penjualan Bersih
-                </h3>
+                <h3 className='text-base sm:text-lg font-medium'>Impression</h3>
                 <p className='text-xl sm:text-2xl text-black font-semibold'>
-                  $46.00
+                  2640
                 </p>
                 <p className='flex flex-row items-center text-sm sm:text-base text-red-500 font-semibold'>
                   {(
@@ -418,10 +456,10 @@ const AdminPage = () => {
             <div className='relative md:max-w-[360px] w-full flex flex-row p-4 rounded-lg items-center bg-white'>
               <div className='flex flex-col text-slate-500'>
                 <h3 className='text-base sm:text-lg font-medium'>
-                  Penjualan Netto
+                  Rata2 Posisi
                 </h3>
                 <p className='text-xl sm:text-2xl text-black font-semibold'>
-                  $102.85
+                  13.4
                 </p>
                 <p className='flex flex-row items-center text-sm sm:text-base text-green-500 font-semibold'>
                   {(
@@ -453,9 +491,22 @@ const AdminPage = () => {
             </div>
             {/* 3rd Line Chart End */}
           </div>{' '}
-          <div className='bg-white overflow-auto max-w-6xl w-full p-4'>
-            <div className='overflow-x-auto w-[60rem]'>
-            <Pie data={salesPerCategoryData} width={75}  options={salesPerCategoryDataOptionPie} />
+          <div className='bg-white'>
+            <div className='w-[400px] xl:w-[600px] p-4 flex flex-col lg:flex-row gap-8'>
+              <p className='font-bold'>Pernjualan per Kategori</p>
+              <Pie
+                data={salesPerCategoryData}
+                width={100}
+                options={salesPerCategoryDataOptionPie}
+              />
+              {/* Status */}
+
+              <p className='font-bold'>Status Pemesanan</p>
+              <Pie
+                data={salesStatusData}
+                width={100}
+                options={salesPerCategoryDataOptionPie}
+              />
               {/* <Bar options={barChartOptions_1} data={salesPerCategoryData} /> */}
             </div>
           </div>

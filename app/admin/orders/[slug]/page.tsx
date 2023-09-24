@@ -2,17 +2,17 @@
 
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { AiOutlineEnter } from 'react-icons/ai';
 
 import DashboardLayout from '@/components/layouts/dashboard/DashboardLayout';
 import { Modal } from '@/components/Modal';
 import { Badge } from '@/components/ui/badge';
+import { toast } from '@/components/ui/use-toast';
 import axios from '@/lib/axios';
 import { cn } from '@/lib/utils';
-import { AiOutlineEnter } from 'react-icons/ai';
-import Loading from '@/components/Loading';
-import { useRouter } from 'next/navigation';
-import { toast } from '@/components/ui/use-toast';
+import Link from 'next/link';
 
 type OrderSchema = {
   id: string;
@@ -155,7 +155,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                   <div className='flex flex-col'>
                     <h3 className='text-lg font-bold'>Nama Organisasi</h3>
                     <p>
-                      {data.data.OrderCustomerDetail[0].organization_name
+                      {!data.data.OrderCustomerDetail[0].organization_name
                         ? '-'
                         : data.data.OrderCustomerDetail[0].organization_name}
                     </p>
@@ -163,7 +163,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                   <div className='flex flex-col'>
                     <h3 className='text-lg font-bold'>Website Organisasi</h3>
                     <p>
-                      {data.data.OrderCustomerDetail[0].organization_website
+                      {!data.data.OrderCustomerDetail[0].organization_website
                         ? '-'
                         : data.data.OrderCustomerDetail[0].organization_website}
                     </p>
@@ -202,7 +202,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                   </div>
                   <div className='flex flex-col'>
                     <h3 className='text-lg font-bold'>Deadline</h3>
-                    <p>{new Date(data.deadline).toLocaleString()}</p>
+                    <p>{new Date(data.data.deadline).toLocaleString()}</p>
                   </div>
                   <div className='flex flex-col'>
                     <h3 className='text-lg font-bold'>Deskripsi</h3>
@@ -216,6 +216,13 @@ const Page = ({ params }: { params: { slug: string } }) => {
                       width={300}
                       height={300}
                     />
+                    <Link
+                    href={data.data.design_url}
+                    target='blank'
+                    className='text-blue-500 underline hover:brightness-75 font-medium'
+                  >
+                    View Here
+                  </Link>
                   </div>
                 </div>
               </div>
